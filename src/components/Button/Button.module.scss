@@ -1,0 +1,38 @@
+.wrapper {
+  display: inline-flex;
+  background-color: transparent;
+  user-select: none;
+  outline: none;
+  cursor: pointer;
+  border: none;
+  justify-content: center;
+  align-items: center;
+  color: var(--text-color);
+  border: 1px solid transparent;
+}
+
+.primary {
+  color: var(--white);
+  background-color: var(--primary);
+  border-color: var(--primary);
+
+  &:hover {
+    border-color: var(--primary);
+    background: linear-gradient(0deg, rgba(0, 0, 0, 0.06), rgba(0, 0, 0, 0.06)),
+      #fe2c55;
+  }
+}
+.outline {
+  color: var(--text-color);
+  border-color: currentColor;
+
+  &:hover {
+    border-color: currentColor;
+    background-color: rgba(254, 44, 85, 0.06);
+  }
+}
+
+.icon {
+  font-size: 0;
+  margin-right: 8px;
+}

@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+  flex: 1;
+}
+
+.searchInput {
+  font-family: var(--font-family);
+  background: transparent;
+  outline: none;
+  border: none;
+  display: flex;
+  flex: 1;
+  font-weight: 500;
+  font-size: 16px;
+  caret-color: rgba(254, 44, 85, 1);
+}
+
+.search {
+  padding: 11px 16px 11px 12px;
+  margin: -12px -16px;
+  transition: background 200ms linear;
+  &:hover {
+    background: rgba(22, 24, 35, 0.03);
+  }
+  & > svg {
+    color: rgba(22, 24, 35, 0.34);
+  }
+}
+
+.spliter {
+  width: 1px;
+  height: 2.8rem;
+  margin-right: 1.6rem;
+  background: rgba(22, 24, 35, 0.12);
+}
+
+.icon {
+  margin: 0 1.2rem;
+}
+
+.listAccount {
+  position: absolute;
+  left: -1.5rem;
+  width: 360px;
+  margin-top: 8px;
+  background: rgb(255, 255, 255);
+  box-shadow: rgb(0 0 0 / 12%) 0px 2px 12px;
+  border-radius: 8px;
+  padding-top: 8px;
+  box-sizing: border-box;
+  max-height: min((100vh - 96px) - 60px, 734px);
+  overflow: hidden auto;
+}
