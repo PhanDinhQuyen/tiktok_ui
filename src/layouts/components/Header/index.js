@@ -9,8 +9,8 @@ import {
   FeedbackIcon,
   KeyboardIcon,
 } from "~/components/Icons";
-import MoreMenu from "~/components/Tippy/More";
-import Search from "~/components/Tippy/Search";
+import MoreMenu from "~/layouts/components/Header/More";
+import Search from "~/layouts/components/Header/Search";
 const cx = classNames.bind(styles);
 
 const MENU_ITEMS = [

@@ -7,7 +7,6 @@ function App() {
     default: DefaultLayout,
     headerOnly: HeaderOnly,
   };
-  console.log(process.env.REACT_APP_BASE_URL);
   return (
     <Routes>
       {publishRoutes.map((item, index) => {

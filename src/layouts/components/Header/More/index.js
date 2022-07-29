@@ -10,6 +10,7 @@ const cx = classNames.bind(styles);
 function MoreMenu({ children, items = [] }) {
   const [dataMenu, setDataMenu] = useState([{ data: items }]);
   const currentMenu = dataMenu[dataMenu.length - 1];
+  console.log("re-render");
   const handleOnClick = (children) => {
     if (!children) return;
     setDataMenu((pre) => [...pre, children]);
