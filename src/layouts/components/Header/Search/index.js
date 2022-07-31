@@ -4,15 +4,19 @@ import { CgSpinnerTwoAlt } from "react-icons/cg";
 import Tippy from "@tippyjs/react/headless";
 
 import { useDebounce } from "~/hooks";
+
 import * as request from "~/utils/httpRequest";
-import styles from "./Search.module.scss";
+
 import Button from "~/components/Button";
 import { ClearIcon, SearchIcon } from "~/components/Icons";
+
+import styles from "./Search.module.scss";
 const cx = classNames.bind(styles);
 
 export default function Search() {
-  const [searchTerm, setSearchTerm] = useState("");
   const [listAccount, setListAccount] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [showListAccount, setShowListAccount] = useState(false);
   const [loading, setLoading] = useState(false);
   const inputRef = useRef();
   const debounceValue = useDebounce(searchTerm, 700);
@@ -20,8 +24,8 @@ export default function Search() {
     if (!debounceValue.trim()) return;
 
     setLoading(true);
-    // Call api
-    const fetchApi = async () => {
+    // Call API
+    (async () => {
       try {
         const res = await request.get("/users/search", {
           params: {
@@ -31,14 +35,11 @@ export default function Search() {
         });
         setLoading(false);
         setListAccount(res.data);
-        console.log(res.data);
       } catch (err) {
         setLoading(false);
         throw new Error(err);
       }
-    };
-
-    fetchApi();
+    })();
   }, [debounceValue]);
 
   const handleChangeSearchTerm = (e) => {
@@ -47,6 +48,15 @@ export default function Search() {
     if (value.startsWith(" ")) return;
     setSearchTerm(e.target.value);
   };
+
+  const handleHideListAccount = () => {
+    setShowListAccount(false);
+  };
+
+  const handleShowListAccount = () => {
+    setShowListAccount(true);
+  };
+
   const handleClearSearchTerm = () => {
     setSearchTerm("");
     setListAccount([]);
@@ -56,9 +66,10 @@ export default function Search() {
     <Fragment>
       <div className={cx("wrapper")}>
         <Tippy
-          visible={searchTerm && listAccount.length > 0}
           interactive
           placement='bottom-start'
+          onClickOutside={handleHideListAccount}
+          visible={listAccount.length > 0 && showListAccount}
           render={(attrs) => (
             <ul className={cx("listAccount")} tabIndex='-1' {...attrs}>
               {listAccount.map((account) => (
@@ -68,12 +79,14 @@ export default function Search() {
           )}
         >
           <input
-            ref={inputRef}
             type='text'
             className={cx("searchInput")}
             placeholder='Search accounts and videos'
+            spellCheck='false'
+            ref={inputRef}
             value={searchTerm}
             onChange={handleChangeSearchTerm}
+            onFocus={handleShowListAccount}
           />
         </Tippy>
       </div>
