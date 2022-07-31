@@ -72,6 +72,7 @@ function Header() {
         </Button>
         {/* Search */}
         <div className={cx("center")}>
+          {/* Tippy Search */}
           <Search />
         </div>
         {/* Action */}
@@ -82,7 +83,7 @@ function Header() {
           <Button tag={Fragment} primary className={cx("login")}>
             Log in
           </Button>
-
+          {/* Tippy More */}
           <MoreMenu items={MENU_ITEMS}>
             <i className={cx("more")}>
               <MoreIcon />

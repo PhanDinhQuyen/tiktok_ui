@@ -3,14 +3,13 @@ import PropTypes from "prop-types";
 import { Fragment, useState } from "react";
 import classNames from "classnames/bind";
 import Button from "~/components/Button";
-import styles from "./MoreMenu.module.scss";
 import { BackIcon } from "~/components/Icons";
+import styles from "./MoreMenu.module.scss";
 
 const cx = classNames.bind(styles);
 function MoreMenu({ children, items = [] }) {
   const [dataMenu, setDataMenu] = useState([{ data: items }]);
   const currentMenu = dataMenu[dataMenu.length - 1];
-  console.log("re-render");
   const handleOnClick = (children) => {
     if (!children) return;
     setDataMenu((pre) => [...pre, children]);
@@ -32,10 +31,10 @@ function MoreMenu({ children, items = [] }) {
         </li>
       );
     });
-
+  const handleResetMenu = () => setDataMenu((pre) => pre.slice(0, 1));
   return (
     <Tippy
-      onHidden={() => setDataMenu((pre) => pre.slice(0, 1))}
+      onHidden={handleResetMenu}
       delay={[0, 700]}
       interactive
       placement='bottom-end'
@@ -68,5 +67,5 @@ export default MoreMenu;
 
 MoreMenu.propTypes = {
   children: PropTypes.node.isRequired,
-  data: PropTypes.array,
+  items: PropTypes.array,
 };

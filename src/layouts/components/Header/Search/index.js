@@ -20,7 +20,7 @@ export default function Search() {
     if (!debounceValue.trim()) return;
 
     setLoading(true);
-
+    // Call api
     const fetchApi = async () => {
       try {
         const res = await request.get("/users/search", {
@@ -45,7 +45,6 @@ export default function Search() {
     setListAccount([]);
     const value = e.target.value;
     if (value.startsWith(" ")) return;
-    // console.log(listAccount);
     setSearchTerm(e.target.value);
   };
   const handleClearSearchTerm = () => {

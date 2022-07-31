@@ -16,12 +16,10 @@ export default function Button({
   primary = false,
   disable = false,
   className,
-  ...passProps
 }) {
   let Comp = "button";
   const props = {
     onClick,
-    ...passProps,
   };
   if (disable) {
     Object.key(props).forEach((key) => {

@@ -40,6 +40,7 @@
     padding: 10px 16px;
     line-height: 0;
     display: flex;
+    justify-content: flex-start;
     transition: background 200ms linear;
     &:hover {
       background: rgba(22, 24, 35, 0.06);

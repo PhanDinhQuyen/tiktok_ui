@@ -14,6 +14,7 @@ const publishRoutes = [
   {
     path: "/live",
     page: Live,
+    layout: "default",
   },
   {
     path: "/search",
@@ -28,7 +29,7 @@ const publishRoutes = [
   {
     path: "/following",
     page: Following,
-    layout: "headerOnly",
+    layout: "default",
   },
 ];
 

@@ -1,6 +1,5 @@
 import { Fragment } from "react";
 import classNames from "classnames/bind";
-
 import { Header, SideBar } from "../components";
 
 import styles from "../Layout.module.scss";
